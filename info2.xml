@@ -1,0 +1,26 @@
+<xml>
+<flower krya = "hiya">
+	<fl1>
+		<description>
+			asdv
+		</description>
+		<simptomes>
+			asdc
+		</simptomes>
+		<cure>
+			asdf
+		</cure>
+	</fl1>
+	<fl2>
+		<description>
+			asd
+		</description>
+		<simptomes>
+			asdwq
+		</simptomes>
+		<cure>
+			asdq
+		</cure>
+	</fl2>
+</flower>
+</xml>

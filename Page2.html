@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <script>
+        /*
+        function show(a) {
+            var elem = document.getElementById("img"+a);
+            elem.style.display = "block";
+            elem.style.position = "relative";
+            elem.style.opacity = 0.6;
+            elem.style.left = event.clientX;
+            elem.style.top = event.clientY + 1;
+        }
+        function hide(a) {
+            var elem = document.getElementById("img"+a);
+            elem.style.display = "none";
+        }*/
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                load(this);
+            }
+        };
+        xhttp.open("GET","info.xml",true);
+        xhttp.send();
+        var tablo = document.createElement("table");
+        tablo.cellPadding = 250;
+        tablo.border = 1;
+        var xmlDoc;
+        function load(xml) {
+            xmlDoc = xml.responseXML;
+        }
+var tablo = document.createElement("table");
+        function show() {
+            var selectmenu = document.getElementById("selected");
+            xmlDoc.getElementsByTagName("fl" + selectmenu.value);
+            if (tablo.rows.length > 0) {
+                tablo.deleteRow(0);
+                tablo.deleteRow(0);
+            }
+            var Zagolovok = tablo.insertRow(0);
+            Zagolovok.insertCell(0).innerHTML = "<span style = 'text-align: center; color: white'>Описание</span>"
+            Zagolovok.insertCell(1).innerHTML = "<span style = 'text-align: center; color: purple'>Симптомы</span>"
+            Zagolovok.insertCell(2).innerHTML = "<span style = 'text-align: center; color: red'>Первая помощь</span>"
+            var newRow = tablo.insertRow(1);
+            newRow.insertCell(0).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[1].innerHTML;
+            newRow.insertCell(1).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[3].innerHTML;
+            newRow.insertCell(2).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[5].innerHTML;
+            document.body.appendChild(tablo);
+
+        }
+    </script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    H1{
+        font-family: Magneto;
+        font-size: 48px;
+        text-align: center;
+    }
+    .forma{
+        font-size: 24px;
+        font-family: "Comic Sans MS";
+        color: #ff9b1e;
+        background-color: rgba(0,0,0,0.5);
+        text-align: center;
+    }
+</style>
+<body bgcolor="#006400">
+    <H1>Ядовитые растения Сибири</H1>
+    <br>
+    <div class="forma">
+        <select id = "selected">
+            <option value="1">Белладонна</option>
+            <option value="2">Болиголов пятнистый</option>
+            <option value="3">Вех ядовитый</option>
+            <option value="4">Вороний глаз четырехлистный</option>
+            <option value="5">Клещевина</option>
+            <option value="6">Чемерица Лобеля</option>
+        </select>
+        <br>
+        <input type = "button" value = "Получить информацию" onclick="show()">
+    </div>
+<br>
+<br>
+<br>
+
+</body>
+</html>

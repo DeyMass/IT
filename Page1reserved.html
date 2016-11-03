@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<script>
+        function show(a) {
+            document.getElementById("popmenu" + a).style.display = "inline-block";
+
+        }
+        function hide(a) {
+            document.getElementById("popmenu" + a).style.display = "none";
+        }
+
+        function Highlight() {
+            var light = document.getElementById("Botanik");
+            light.style.color = "#FF0000";
+        }
+
+        function show() {
+            document.getElementById("Botanik").innerHTML = "Наука о растениях, раздел биологии";
+        }
+
+		function leave() {
+            document.getElementById("Botanik").innerHTML = "ботаники"
+		}
+
+		var img = document.createElement("img");
+        function showIMG(name) {
+            if (name == "derevo") {
+                img.src = "photo/derevo.png";
+                img.style.position = "absolute";
+                img.style.top = event.clientY + 1 + "px";
+                img.style.left = event.clientX + 1 + "px";
+                img.style.width = "5%";
+                img.style.height = "25%";
+                img.style.background = "rgba(0,0,0,0.8)";
+            }
+            document.body.appendChild(img);
+        }
+        function hideIMG() {
+            document.body.removeChild(img);
+        }
+	</script>
+
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+
+<style>
+	.textstyle{
+        position: absolute;
+		color: #FFFFFF;
+		font-size: 20px;
+		text-shadow: 3px 3px 1px black;
+	}
+	.zagolovok{
+		background-color: chartreuse;
+		font-size: 48px;
+		text-align: center;
+		margin-left: 40%;
+		margin-right: 40%;
+		border: brown double 10px;
+	}
+    .innerBackground{
+        background-color: rgba(0,0,0,0.6);
+    }
+    .m{
+        background-color: rgba(0,0,0,0.5);
+        border: 2px solid red;
+        border-radius: 2px;
+        padding-right: 2px;
+        padding-left: 2px;
+        color: #BBBBBB;
+
+    }
+
+    .popup{
+        background-color: rgba(0,0,0,1);
+        padding: 20px;
+        display: none;
+        position: relative;
+    }
+
+	.innerText{
+		padding-top: 0px;
+		padding-left: 5%;
+		padding-right: 5%;
+		border-left: #ffb318 20px double;
+	}
+</style>
+
+<body background="grass_texture237.jpg" VLINK="#a9a9a9" alink="#a52a2a" link="#ff7f50">
+	<div class = "textstyle" style = "display: inline-block;">
+		<div class="zagolovok">Растения</div>
+        <br><br>
+        <div class= "m" id = "menu1" style = "display: inline-block; ">Главная страница</div>
+        <div class= "m" id = "menu2" style = "display: inline-block; " onmouseleave="hide(1)" onmouseover="show(1)">Растения России</div>
+        <div class= "m" id = "menu3" style = "display: inline-block; " onmouseleave="hide(2)" onmouseover="show(2)">Главная Привет</div>
+        <div class= "m" id = "menu4" style = "display: inline-block; " onmouseleave="hide(3)" onmouseover="show(3)">Главная страница</div>
+        <br>
+        <div class = "popup"  onmouseleave="hide(1)" onmouseover="show(1)"  id = popmenu1 style = " margin-left: 166px;">
+            <a href="Page2.html">Ядовитые</a>
+            <br>
+            <a href="Page3.html">Не ядовитые</a>
+        </div>
+        <div class="popup" onmouseleave="hide(2)" onmouseover="show(2)" id = popmenu2 style = "margin-left: 320px;">
+            Ядовитые
+            <br>
+            Не ядовитые
+        </div>
+        <div class="popup" onmouseleave="hide(3)" onmouseover="show(3)" id = popmenu3 style = "margin-left: 475px;">
+            Ядовитые
+            <br>
+            Не ядовитые
+        </div>
+        <br>
+        <br>
+        <br>
+		<div class="innerText" style = "display: inline-block;">
+            <div class = "innerBackground">
+                &nbsp&nbsp&nbsp&nbsp Расте́ния (лат. <span style="color: lightcoral;">Plantae</span>, или <span style ="color: lightcoral;"> Vegetabilia</span>) — биологическое царство, одна из основных групп многоклеточных
+                организмов, включающая в себя в том числе мхи, папоротники, хвощи, плауны, голосеменные и цветковые растения.
+                Нередко к растениям относят также все водоросли или некоторые их группы. Растения (в первую очередь, цветковые)
+                представлены многочисленными жизненными формами — среди них есть <span style="display: inline-block; color: red" onmouseleave="hideIMG()" onmousemove="showIMG('derevo')"> деревья</span>, кустарники, травы и др.
+                Растения являются объектом исследования науки <div style = "display: inline-block; color: red;" id = "Botanik" onload = "Highlight()" onmouseover="show()" onmouseleave="leave()">ботаники</div>.
+                <br> 
+
+            </div>
+		</div>
+	</div>
+
+</body>
+</html>
