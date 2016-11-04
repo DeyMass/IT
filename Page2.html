@@ -25,13 +25,13 @@
         xhttp.open("GET","info.xml",true);
         xhttp.send();
         var tablo = document.createElement("table");
-        tablo.cellPadding = 250;
-        tablo.border = 1;
+        tablo.cellPadding = 2;
+        tablo.border = 2;
+        tablo.style.textAlign = "justify";
         var xmlDoc;
         function load(xml) {
             xmlDoc = xml.responseXML;
         }
-var tablo = document.createElement("table");
         function show() {
             var selectmenu = document.getElementById("selected");
             xmlDoc.getElementsByTagName("fl" + selectmenu.value);
@@ -40,10 +40,14 @@ var tablo = document.createElement("table");
                 tablo.deleteRow(0);
             }
             var Zagolovok = tablo.insertRow(0);
+            Zagolovok.style.textAlign = "center";
+            Zagolovok.style.background = "rgba(255,255,255,0.3)";
             Zagolovok.insertCell(0).innerHTML = "<span style = 'text-align: center; color: white'>Описание</span>"
-            Zagolovok.insertCell(1).innerHTML = "<span style = 'text-align: center; color: purple'>Симптомы</span>"
-            Zagolovok.insertCell(2).innerHTML = "<span style = 'text-align: center; color: red'>Первая помощь</span>"
+            Zagolovok.insertCell(1).innerHTML = "<span style = 'text-align: center; color: white'>Симптомы</span>"
+            Zagolovok.insertCell(2).innerHTML = "<span style = 'text-align: center; color: white'>Первая помощь</span>"
             var newRow = tablo.insertRow(1);
+            newRow.style.textAlign = "justify";
+            newRow.style.background = "rgba(255,255,255,0.3)";
             newRow.insertCell(0).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[1].innerHTML;
             newRow.insertCell(1).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[3].innerHTML;
             newRow.insertCell(2).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[5].innerHTML;
@@ -55,6 +59,19 @@ var tablo = document.createElement("table");
     <title>Title</title>
 </head>
 <style>
+
+    .simpleText{
+        text-shadow: 3px 3px 1px black;;
+        color: #DDDDDD;
+        font-size: 20px;
+        text-align: justify;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5%;
+        padding-right: 5%;
+        background: rgba(0,0,0,0.8);
+    }
+
     H1{
         font-family: Magneto;
         font-size: 48px;
@@ -62,15 +79,34 @@ var tablo = document.createElement("table");
     }
     .forma{
         font-size: 24px;
+        text-shadow: 3px 3px 1px black;;
         font-family: "Comic Sans MS";
         color: #ff9b1e;
         background-color: rgba(0,0,0,0.5);
         text-align: center;
+        margin-right: 30%;
+        margin-left: 30%;
     }
 </style>
-<body bgcolor="#006400">
-    <H1>Ядовитые растения Сибири</H1>
+<body background="leaf_texture.jpg">
+    <H1>Ядовитые растения России</H1>
     <br>
+    <div class="simpleText">
+    Отличать ядовитые растения от других должен уметь каждый и не только уметь сам, но и научить этому своих детей.
+    Ведь зачастую именно дети становятся жертвами опасных растений в силу своей природной любознательности
+    и отсутствия элементарных знаний.
+
+    Но мало просто узнавать ядовитые растения, необходимо иметь четкие представления о том,
+    как оказывать первую помощь при отравлении или поражении тем и или иным опасным растением.
+
+    Коварство ядовитых растений в том, что часто эти красивые и внешне совершенно безобидные растения способны убивать.
+    И «убийцы» эти растут не в далеких экзотических странах, а рядом с нами: на даче, в лесу или в парке.
+    К счастью смертельно ядовитых трав в России немного, но, тем не менее, они существуют, и 6 из них наиболее опасны.
+    </div>
+    <br>
+    <br>
+    <br>
+    <H2 style = "color: white; text-align: center; text-shadow: 3px 3px 1px black;">Выберите растение из списка, чтобы узнать о нём больше</H2>
     <div class="forma">
         <select id = "selected">
             <option value="1">Белладонна</option>
