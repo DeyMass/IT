@@ -1,14 +1,15 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>
-    .sf{
-        position: ;
-    }
-</style>
 	<script>
+        function LOAD() {
+            document.getElementById("menu0").style.background = "rgba(150,150,150,0.9)";
+        }
+
         function hide(a) {
             document.getElementById("popmenu" + a).style.display = "none";
+            document.getElementById("menu" + a).style.background = "rgba(0,0,0,0.6)";
+
         }
 
         function Highlight() {
@@ -28,12 +29,10 @@
             var popup = document.getElementById("popmenu"+a).style;
             popup.position = "absolute";
             popup.display = "block";
-            alert(document.getElementById("menu" + a).style.bottom);
-            console.log(parseInt(document.getElementById("menu" + a).style.bottom));
+            var menu = document.getElementById("menu" + a).style;
+            menu.background = "rgba(150,150,150,0.9)";
             popup.top = document.getElementById("menu" + a).style.top + 0 + "px";
             popup.left = document.getElementById("menu" + a).style.bottom + 0 + "px";
-
-
         }
 
 		function leave() {
@@ -41,19 +40,55 @@
 		}
 
 		var img = document.createElement("img");
+        var derevo = img.load("photo/derevo.png");
+        var kust = img.load("photo/kustarnik.png");
+        img.src = null;
+        var flag = 1;
         function showIMG(name) {
-            if (name == "derevo") {
-                img.src = "photo/derevo.png";
+            document.body.appendChild(img);
+            if (name == "derevo" && flag) {
+                if (img.src != "photo/derevo.png")
+                    img.src = "photo/derevo.png";
                 img.style.position = "absolute";
+                img.style.width = "8%";
+                img.style.height = "15%";
+                img.style.background = "rgba(0,0,0,0.8)";
+                flag = 0;
+            }
+            if (!flag){
                 img.style.top = event.clientY + 2 + "px";
                 img.style.left = event.clientX + 2 + "px";
-                img.style.width = "5%";
-                img.style.height = "25%";
+        }
+            if (name == "kust" && flag) {
+                if (img.src != "photo/kustarnik.png")
+                    img.src = "photo/kustarnik.png";
+                img.style.position = "absolute";
+                img.style.width = "8%";
+                img.style.height = "15%";
                 img.style.background = "rgba(0,0,0,0.8)";
+                flag = 0;
             }
-            document.body.appendChild(img);
+            if (!flag){
+                img.style.top = event.clientY + 2 + "px";
+                img.style.left = event.clientX + 2 + "px";
+            }
+            if (name == "trava"){
+                if (img.src != "photo/trava.png")
+                    img.src = "photo/trava.png";
+                img.style.position = "absolute";
+                img.style.width = "8%";
+                img.style.height = "15%";
+                img.style.background = "rgba(0,0,0,0.8)";
+                flag = 0;
+            }
+            if (!flag){
+                img.style.top = event.clientY + 2 + "px";
+                img.style.left = event.clientX + 2 + "px";
+            }
+
         }
         function hideIMG() {
+            flag = 1;
             document.body.removeChild(img);
         }
 	</script>
@@ -66,6 +101,8 @@
 	.textstyle{
         position: absolute;
 		color: #FFFFFF;
+        line-height: 60px;
+        outline-width: 20px;
 		font-size: 20px;
 		text-shadow: 3px 3px 1px black;
 	}
@@ -80,14 +117,19 @@
     .innerBackground{
         background-color: rgba(0,0,0,0.6);
     }
-    .m{
+    .mainmenu{
+        cursor: pointer;
+        line-height: 20px;
         background-color: rgba(0,0,0,0.5);
         border: 2px solid red;
-        border-radius: 2px;
-        padding-right: 2px;
-        padding-left: 2px;
-        color: #BBBBBB;
+        padding: 20px;
+        color: #FFEEFF;
 
+    }
+
+    .IMG{
+        display: inline-block;
+        color: red;
     }
 
     .popup{
@@ -105,15 +147,18 @@
 	}
 </style>
 
-<body background="grass_texture237.jpg" VLINK="#a9a9a9" alink="#a52a2a" link="#ff7f50">
+<body background="grass_texture237.jpg" VLINK="#a9a9a9" alink="#a52a2a" link="#ff7f50" onload="LOAD()">
 	<div class = "textstyle" style = "display: inline-block;">
 		<div class="zagolovok">Растения</div>
         <br><br>
-        <div class= "m" id = "menu1" style = "display: inline-block; ">Главная страница</div>
-        <div class= "m" id = "menu2" style = "display: inline-block; " onmouseleave="hide(1)" onmouseover="show(1)">Растения России</div>
-        <div class= "m" id = "menu3" style = "display: inline-block; " onmouseleave="hide(2)" onmouseover="show(2)">Главная Привет</div>
-        <div class= "m" id = "menu4" style = "display: inline-block; " onmouseleave="hide(3)" onmouseover="show(3)">Главная страница</div>
-        <br>
+
+        <div class= "mainmenu" id = "menuContainer" style = "display: inline-block; ">
+            <span class="mainmenu" id = "menu0" style = "display: inline-block; " onmouseleave="hide(0)" onmouseover="show(0)" active>Главная страница</span>
+            <span class="mainmenu" id = "menu1" style = "display: inline-block; " onmouseleave="hide(1)" onmouseover="show(1)" notactive>Растения России</span>
+            <span class="mainmenu" id = "menu2" style = "display: inline-block; " onmouseleave="hide(2)" onmouseover="show(2)" notactive>Главная Привет</span>
+            <span class="mainmenu" id = "menu3" style = "display: inline-block; " onmouseleave="hide(3)" onmouseover="show(3)" notactive>Главная страница</span>
+        </div>
+
         <div class = "popup"  onmouseleave="hide(1)" onmouseover="show(1)"  id = popmenu1>
             <a href="Page2.html">Ядовитые</a>
             <br>
@@ -131,19 +176,23 @@
         </div>
         <br>
         <br>
-        <br>
 		<div class="innerText" style = "display: inline-block;">
             <div class = "innerBackground">
                 &nbsp&nbsp&nbsp&nbsp Расте́ния (лат. <span style="color: lightcoral;">Plantae</span>, или <span style ="color: lightcoral;"> Vegetabilia</span>) — биологическое царство, одна из основных групп многоклеточных
                 организмов, включающая в себя в том числе мхи, папоротники, хвощи, плауны, голосеменные и цветковые растения.
                 Нередко к растениям относят также все водоросли или некоторые их группы. Растения (в первую очередь, цветковые)
-                представлены многочисленными жизненными формами — среди них есть <span style="display: inline-block; color: red" onmouseleave="hideIMG()" onmousemove="showIMG('derevo')"> деревья</span>, кустарники, травы и др.
+                представлены многочисленными жизненными формами — среди них есть
+                    <div class = "IMG">
+                        <span onmouseleave="hideIMG()" onmousemove="showIMG('derevo')"> деревья</span>,
+                        <span onmouseleave="hideIMG()" onmousemove="showIMG('kust')">кустарники</span>,
+                        <span onmouseleave="hideIMG()" onmousemove="showIMG('trava')">травы </span>
+                    </div> и др.
                 Растения являются объектом исследования науки <div style = "display: inline-block; color: red;" id = "name" onload = "Highlight()" onmousemove="show(4)" onmouseleave="leave()">ботаники</div>.
-                <br> 
                 <div style = "position: absolute; display: none; color: red" id = "definition">Наука о растениях, раздел биологии</div>
             </div>
 		</div>
 	</div>
+
 
 </body>
 </html>
