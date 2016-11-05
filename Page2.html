@@ -26,8 +26,13 @@
         xhttp.send();
         var tablo = document.createElement("table");
         tablo.cellPadding = 2;
-        tablo.border = 2;
+        tablo.cellSpacing = 5;
+
+        tablo.border = 4;
         tablo.style.textAlign = "justify";
+        tablo.style.borderColor = "#550000";
+        tablo.style.borderColor = ;
+
         var xmlDoc;
         function load(xml) {
             xmlDoc = xml.responseXML;
@@ -41,17 +46,31 @@
             }
             var Zagolovok = tablo.insertRow(0);
             Zagolovok.style.textAlign = "center";
-            Zagolovok.style.background = "rgba(255,255,255,0.3)";
+            Zagolovok.style.background = "rgba(255,255,255,0.1)";
+            Zagolovok.style.fontSize = "24px";
+            Zagolovok.style.textShadow = "2px 2px 1px black";
             Zagolovok.insertCell(0).innerHTML = "<span style = 'text-align: center; color: white'>Описание</span>"
             Zagolovok.insertCell(1).innerHTML = "<span style = 'text-align: center; color: white'>Симптомы</span>"
             Zagolovok.insertCell(2).innerHTML = "<span style = 'text-align: center; color: white'>Первая помощь</span>"
             var newRow = tablo.insertRow(1);
             newRow.style.textAlign = "justify";
-            newRow.style.background = "rgba(255,255,255,0.3)";
+            newRow.style.background = "rgba(255,255,255,0.6)";
+            newRow.style.textShadow = "1px 1px 1px white";
+            newRow.style.fontSize = "24px";
             newRow.insertCell(0).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[1].innerHTML;
             newRow.insertCell(1).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[3].innerHTML;
             newRow.insertCell(2).innerHTML = xmlDoc.getElementsByTagName("fl" + selectmenu.value).item(0).childNodes[5].innerHTML;
             document.body.appendChild(tablo);
+            i = window.scrollY;
+            timer = setInterval("softScroll()", 20);
+
+        }
+        var timer;
+        var i = 0;
+        function softScroll(){
+            window.scrollTo(0, i);
+            i+= 30;
+            if (i >= 350){i = 0; clearInterval(timer);}
 
         }
     </script>
@@ -89,7 +108,7 @@
     }
 </style>
 <body background="leaf_texture.jpg">
-    <H1>Ядовитые растения России</H1>
+    <H1 style = "text-shadow: 3px 3px 1px red">Ядовитые растения России</H1>
     <br>
     <div class="simpleText">
     Отличать ядовитые растения от других должен уметь каждый и не только уметь сам, но и научить этому своих детей.
