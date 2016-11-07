@@ -29,10 +29,9 @@
             var popup = document.getElementById("popmenu"+a).style;
             popup.position = "absolute";
             popup.display = "block";
+
             var menu = document.getElementById("menu" + a).style;
             menu.background = "rgba(150,150,150,0.9)";
-            popup.top = document.getElementById("menu" + a).style.top + 0 + "px";
-            popup.left = document.getElementById("menu" + a).style.bottom + 0 + "px";
         }
 
 		function leave() {
@@ -40,8 +39,6 @@
 		}
 
 		var img = document.createElement("img");
-        var derevo = img.load("photo/derevo.png");
-        var kust = img.load("photo/kustarnik.png");
         img.src = null;
         var flag = 1;
         function showIMG(name) {
@@ -153,26 +150,16 @@
         <br><br>
 
         <div class= "mainmenu" id = "menuContainer" style = "display: inline-block; ">
-            <span class="mainmenu" id = "menu0" style = "display: inline-block; " onmouseleave="hide(0)" onmouseover="show(0)" active>Главная страница</span>
+            <span class="mainmenu" id = "menu0" style = "display: inline-block; " active>Главная страница</span>
             <span class="mainmenu" id = "menu1" style = "display: inline-block; " onmouseleave="hide(1)" onmouseover="show(1)" notactive>Растения России</span>
-            <span class="mainmenu" id = "menu2" style = "display: inline-block; " onmouseleave="hide(2)" onmouseover="show(2)" notactive>Главная Привет</span>
-            <span class="mainmenu" id = "menu3" style = "display: inline-block; " onmouseleave="hide(3)" onmouseover="show(3)" notactive>Главная страница</span>
+            <span class="mainmenu" id = "menu2" style = "display: inline-block; " notactive>Главная Привет</span>
+            <span class="mainmenu" id = "menu3" style = "display: inline-block; " notactive>Главная страница</span>
         </div>
 
-        <div class = "popup"  onmouseleave="hide(1)" onmouseover="show(1)"  id = popmenu1>
+        <div class = "popup" style = "position: absolute; margin-left: 240px; margin-top: -25px" onmouseleave="hide(1)" onmouseover="show(1)"  id = popmenu1>
             <a href="Page2.html">Ядовитые</a>
             <br>
-            <a href="Page3.html">Не ядовитые</a>
-        </div>
-        <div class="popup" onmouseleave="hide(2)" onmouseover="show(2)" id = popmenu2>
-            Ядовитые
-            <br>
-            Не ядовитые
-        </div>
-        <div class="popup" onmouseleave="hide(3)" onmouseover="show(3)" id = popmenu3>
-            Ядовитые
-            <br>
-            Не ядовитые
+            <a href="Page3.html">Съедобные</a>
         </div>
         <br>
         <br>
